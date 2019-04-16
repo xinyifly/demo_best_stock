@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.version = '0.1.0'
   s.summary = 'Find the stock that increased most'
   s.author = 'Zeyu Chen'
-  s.files = %w[LICENSE lib/demo_best_stock.rb]
+  s.files = Dir['LICENSE', 'lib/**/*']
 
   s.license = 'GPL-3.0'
   s.homepage = 'https://github.com/xinyifly/demo_best_stock'
