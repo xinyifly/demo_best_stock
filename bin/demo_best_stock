@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+if [nil, '-h', '--help'].include? ARGV[0]
+  puts 'Usage: demo_best_stock [file.csv]'
+  exit
+end
+
+require 'demo_best_stock'
+require 'csv'
+
+puts DemoBestStock.best(CSV.read(ARGV[0], headers: true))
