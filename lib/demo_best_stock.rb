@@ -2,7 +2,7 @@ require 'set'
 
 module DemoBestStock
   def self.best(items)
-    stocks = {}
+    stocks = Hash.new { |hash, key| hash[key] = SortedSet.new([]) }
     items.each do |item|
       begin
         Float(item['Value'])
@@ -10,9 +10,7 @@ module DemoBestStock
         next
       end
 
-      stocks.merge!(
-        item['Name'] => SortedSet.new([RecordByDate.from_plain(item)])
-      ) { |_key, oldset, newset| oldset + newset }
+      stocks[item['Name']] << RecordByDate.from_plain(item)
     end
 
     best_stock = stocks.reduce(nil) do |stock, (key, set)|
