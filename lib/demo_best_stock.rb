@@ -1,13 +1,18 @@
 require 'set'
 
-class DemoBestStock
+module DemoBestStock
   def self.best(items)
     stocks = {}
     items.each do |item|
-      Float(item['Value']) rescue next
+      begin
+        Float(item['Value'])
+      rescue ArgumentError, TypeError
+        next
+      end
+
       stocks.merge!(
-        item['Name'] => SortedSet.new([RecordByDate.from_plain(item)]),
-      ) { |key, oldset, newset| oldset + newset }
+        item['Name'] => SortedSet.new([RecordByDate.from_plain(item)])
+      ) { |_key, oldset, newset| oldset + newset }
     end
 
     best_stock = stocks.reduce(nil) do |stock, (key, set)|

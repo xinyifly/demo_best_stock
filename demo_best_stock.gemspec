@@ -7,8 +7,9 @@ Gem::Specification.new do |s|
 
   s.license = 'GPL-3.0'
   s.homepage = 'https://github.com/xinyifly/demo_best_stock'
-  
-  s.add_development_dependency "rake", "~> 12.3"
-  s.add_development_dependency "minitest", "~> 5.11"
+
+  s.add_development_dependency 'minitest', '~> 5.11'
+  s.add_development_dependency 'rake', '~> 12.3'
+
   s.executables << 'demo_best_stock'
 end
